@@ -16,7 +16,7 @@ import { ProductModule } from './product/product.module';
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: (config: ConfigService) => ({
-        uri: config.get<string>('MONGO_URI'),
+        uri: config.get<string>('MONGO_URI_PROD'),
       }),
       inject: [ConfigService],
     }),
