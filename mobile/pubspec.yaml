@@ -11,6 +11,8 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.8
   google_fonts: ^6.2.1
+  flutter_launcher_icons: ^0.14.3
+  flutter_native_splash: ^2.4.6
 
 dev_dependencies:
   flutter_test:
@@ -21,6 +23,20 @@ flutter:
   uses-material-design: true
   assets:
    - assets/images/
+
+
+flutter_native_splash:
+  color: "#53B175"
+  image: assets/images/logo_splash.png
+  android_gravity: center
+  ios_content_mode: center
+  android: true
+  ios: true
+  web: false
+  android_12:
+    color: "#53B175"
+    image: assets/images/logo_splash.png
+    icon_background_color: "#53B175"
 
   # fonts:
   #   - family: Schyler
