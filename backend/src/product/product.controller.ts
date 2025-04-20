@@ -35,6 +35,7 @@ export class ProductController {
         description: { type: 'string' },
         price: { type: 'number' },
         lbs: { type: 'number' },
+        categoryId: { type: 'string' },
         images: {
           type: 'array',
           items: {
@@ -43,7 +44,7 @@ export class ProductController {
           },
         },
       },
-      required: ['name', 'description', 'price', 'lbs'],
+      required: ['name', 'description', 'price', 'lbs', 'categoryId'],
     },
   })
   @UseInterceptors(FilesInterceptor('images', 5))
@@ -94,6 +95,7 @@ export class ProductController {
         description: { type: 'string' },
         price: { type: 'number' },
         lbs: { type: 'number' },
+        categoryId: { type: 'string' },
         images: {
           type: 'array',
           items: {
