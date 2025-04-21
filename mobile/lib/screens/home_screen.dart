@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile/screens/categories_screen.dart';
 import 'package:mobile/utils/text.dart';
 import 'package:mobile/widgets/bottom_navigation.dart';
 import 'package:mobile/widgets/category_card.dart';
@@ -28,7 +29,9 @@ class HomeScreen extends StatelessWidget {
                         fontWeight: FontWeight.w900
                       )),
                       IconButton(
-                          onPressed: () => {}, 
+                          onPressed: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => const CategoriesScreen()));
+                          },
                           icon: Icon(Icons.chevron_right_rounded)
                       )
                     ],
