@@ -48,6 +48,6 @@ class ActionsNavigation extends StatelessWidget {
             ),
           ),
         )
-    );;
+    );
   }
 }
