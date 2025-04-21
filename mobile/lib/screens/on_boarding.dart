@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile/screens/home_screen.dart';
 import 'package:mobile/utils/colors.dart';
 import 'package:mobile/utils/text.dart';
 
@@ -60,7 +61,12 @@ class OnBoardingScreen extends StatelessWidget {
                           DColors.primaryGreen
                       )
                     ),
-                    onPressed: () => {},
+                    onPressed: () {
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(builder: (context)=> const HomeScreen())
+                      );
+                    },
                     child: Text(
                         DTexts.getStated
                     )
