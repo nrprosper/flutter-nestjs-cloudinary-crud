@@ -16,6 +16,7 @@ class FNMApplication extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         useMaterial3: true,
+        scaffoldBackgroundColor: Color(0xFFF4F5F9),
         textTheme: GoogleFonts.montserratTextTheme(
           Theme.of(context).textTheme
         ),
