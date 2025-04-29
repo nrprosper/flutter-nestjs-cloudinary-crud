@@ -10,7 +10,7 @@ _Category _$CategoryFromJson(Map<String, dynamic> json) => _Category(
   id: json['id'] as String?,
   name: json['name'] as String,
   description: json['description'] as String?,
-  image: json['image'] as String?,
+  image: json['image'] as String,
   createdAt:
       json['createdAt'] == null
           ? null

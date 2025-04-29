@@ -9,7 +9,7 @@ abstract class Category with _$Category {
     String? id,
     required String name,
     String? description,
-    String? image,
+    required String image,
     DateTime? createdAt,
     DateTime? updatedAt,
   }) = _Category;
