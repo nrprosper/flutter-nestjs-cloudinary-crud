@@ -3,6 +3,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mobile/screens/on_boarding.dart';
+import 'package:mobile/theme.dart';
 import 'package:mobile/utils/theme.dart';
 
 void main() async{
@@ -23,7 +24,11 @@ class FNMApplication extends StatelessWidget {
         textTheme: GoogleFonts.montserratTextTheme(
           Theme.of(context).textTheme
         ),
-        elevatedButtonTheme: DTheme.elevatedButtonThemeData
+        inputDecorationTheme: DThemes.inputDecorationTheme,
+        elevatedButtonTheme: DTheme.elevatedButtonThemeData,
+        appBarTheme: AppBarTheme(
+          color: Color(0xFFF4F5F9)
+        )
       ),
       home: const OnBoardingScreen()
     );
