@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$Product {
 
- String? get id; String get name; String get description; double get price; double get lbs; Category get category; List<String> get images; DateTime? get createdAt; DateTime? get updatedAt;
+@JsonKey(name: '_id') String get id; String get name; String get description; double get price; double get lbs; Category get category; List<String> get images; DateTime? get createdAt; DateTime? get updatedAt;
 /// Create a copy of Product
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -49,7 +49,7 @@ abstract mixin class $ProductCopyWith<$Res>  {
   factory $ProductCopyWith(Product value, $Res Function(Product) _then) = _$ProductCopyWithImpl;
 @useResult
 $Res call({
- String? id, String name, String description, double price, double lbs, Category category, List<String> images, DateTime? createdAt, DateTime? updatedAt
+@JsonKey(name: '_id') String id, String name, String description, double price, double lbs, Category category, List<String> images, DateTime? createdAt, DateTime? updatedAt
 });
 
 
@@ -66,10 +66,10 @@ class _$ProductCopyWithImpl<$Res>
 
 /// Create a copy of Product
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? name = null,Object? description = null,Object? price = null,Object? lbs = null,Object? category = null,Object? images = null,Object? createdAt = freezed,Object? updatedAt = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = null,Object? description = null,Object? price = null,Object? lbs = null,Object? category = null,Object? images = null,Object? createdAt = freezed,Object? updatedAt = freezed,}) {
   return _then(_self.copyWith(
-id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as String?,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,description: null == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as String,price: null == price ? _self.price : price // ignore: cast_nullable_to_non_nullable
 as double,lbs: null == lbs ? _self.lbs : lbs // ignore: cast_nullable_to_non_nullable
@@ -97,10 +97,10 @@ $CategoryCopyWith<$Res> get category {
 @JsonSerializable()
 
 class _Product implements Product {
-  const _Product({this.id, required this.name, required this.description, required this.price, required this.lbs, required this.category, required final  List<String> images, this.createdAt, this.updatedAt}): _images = images;
+  const _Product({@JsonKey(name: '_id') required this.id, required this.name, required this.description, required this.price, required this.lbs, required this.category, required final  List<String> images, this.createdAt, this.updatedAt}): _images = images;
   factory _Product.fromJson(Map<String, dynamic> json) => _$ProductFromJson(json);
 
-@override final  String? id;
+@override@JsonKey(name: '_id') final  String id;
 @override final  String name;
 @override final  String description;
 @override final  double price;
@@ -149,7 +149,7 @@ abstract mixin class _$ProductCopyWith<$Res> implements $ProductCopyWith<$Res> {
   factory _$ProductCopyWith(_Product value, $Res Function(_Product) _then) = __$ProductCopyWithImpl;
 @override @useResult
 $Res call({
- String? id, String name, String description, double price, double lbs, Category category, List<String> images, DateTime? createdAt, DateTime? updatedAt
+@JsonKey(name: '_id') String id, String name, String description, double price, double lbs, Category category, List<String> images, DateTime? createdAt, DateTime? updatedAt
 });
 
 
@@ -166,10 +166,10 @@ class __$ProductCopyWithImpl<$Res>
 
 /// Create a copy of Product
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? name = null,Object? description = null,Object? price = null,Object? lbs = null,Object? category = null,Object? images = null,Object? createdAt = freezed,Object? updatedAt = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = null,Object? description = null,Object? price = null,Object? lbs = null,Object? category = null,Object? images = null,Object? createdAt = freezed,Object? updatedAt = freezed,}) {
   return _then(_Product(
-id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as String?,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,description: null == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as String,price: null == price ? _self.price : price // ignore: cast_nullable_to_non_nullable
 as double,lbs: null == lbs ? _self.lbs : lbs // ignore: cast_nullable_to_non_nullable

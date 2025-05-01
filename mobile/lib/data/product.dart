@@ -8,7 +8,7 @@ part 'product.g.dart';
 @freezed
 abstract class Product with _$Product {
   const factory Product({
-    String? id,
+    @JsonKey(name: '_id') required String id,
     required String name,
     required String description,
     required double price,
