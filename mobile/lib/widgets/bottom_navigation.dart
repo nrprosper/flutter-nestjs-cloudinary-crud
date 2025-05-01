@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mobile/screens/add_category_screen.dart';
+import 'package:mobile/screens/add_product_screen.dart';
 import 'package:mobile/utils/theme.dart';
 
 import '../utils/colors.dart';
@@ -27,8 +29,9 @@ class BottomNavigation extends StatelessWidget {
                           DColors.primaryGreen
                       ),
                     ),
-                    onPressed: () {
-                    },
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => const AddProductScreen()));
+                      },
                     child: const Text('Add Product'),
                   ),
                 )),
@@ -41,6 +44,7 @@ class BottomNavigation extends StatelessWidget {
                       ),
                     ),
                     onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => const AddCategoryScreen()));
                     },
                     child: const Text('Add Category'),
                   ),
