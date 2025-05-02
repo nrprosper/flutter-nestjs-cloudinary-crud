@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:mobile/data/product.dart';
 import 'package:mobile/screens/product_details.dart';
 import 'package:mobile/utils/colors.dart';
 
 class ProductCard extends StatelessWidget {
-  const ProductCard({super.key});
+  const ProductCard({super.key, required this.product});
+
+  final Product product;
 
   @override
   Widget build(BuildContext context) {
@@ -28,23 +31,23 @@ class ProductCard extends StatelessWidget {
                       top: 7.0,
                       left: 0,
                       right: 0,
-                      child: Image.asset("assets/images/apples.png", height: 91, width: 72),
+                      child: Image.network(product.images[0], height: 91, width: 72),
                     )
                   ],
                 ),
                 Center(
                   child: Column(
                     children: [
-                      Text("8.00", style: TextStyle(
+                      Text('${product.price}', style: TextStyle(
                           color: DColors.primaryGreen,
                           fontSize: 12.0,
                           fontWeight: FontWeight.w900
                       )),
-                      Text("Fresh Peach", style: TextStyle(
+                      Text(product.name, style: TextStyle(
                           fontSize: 15.0,
                           fontWeight: FontWeight.w900
                       )),
-                      Text("2.0 lbs", style: TextStyle(
+                      Text('${product.lbs} lbs', style: TextStyle(
                           color: DColors.grey,
                           fontSize: 12.0,
                           fontWeight: FontWeight.w900
