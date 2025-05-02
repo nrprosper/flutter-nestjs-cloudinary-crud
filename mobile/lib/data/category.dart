@@ -10,7 +10,7 @@ abstract class Category with _$Category {
     @JsonKey(name: '_id') required String id,
     required String name,
     String? description,
-    required String image,
+    String? image,
     DateTime? createdAt,
     DateTime? updatedAt,
   }) = _Category;
