@@ -54,7 +54,7 @@ class OnBoardingScreen extends StatelessWidget {
                 ),
                 SizedBox(
                   width: double.infinity,
-                  height: 67.0,
+                  height: 57.0,
                   child: ElevatedButton(
                     style: ButtonStyle(
                       backgroundColor: WidgetStateProperty.all<Color>(
