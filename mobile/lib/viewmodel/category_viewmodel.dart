@@ -1,4 +1,5 @@
 import 'dart:io';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mobile/data/category.dart';
 import 'package:mobile/services/category_service.dart';
@@ -16,8 +17,8 @@ class CategoryViewModel extends StateNotifier<State<List<Category>>> {
     try {
       final categories = await _categoryService.getAllCategories();
       state = State.success(categories);
-    } catch (e) {
-      state = State.error(e as Exception);
+    } catch (e, stackTrace) {
+      state = State.error(Exception(e.toString()));
     }
   }
 
