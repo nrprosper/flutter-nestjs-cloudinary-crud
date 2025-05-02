@@ -1,77 +1,80 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mobile/providers.dart';
 import 'package:mobile/screens/categories_screen.dart';
+import 'package:mobile/sections/home_products.dart';
+import 'package:mobile/sections/home_top_categories.dart';
 import 'package:mobile/utils/text.dart';
 import 'package:mobile/widgets/bottom_navigation.dart';
-import 'package:mobile/widgets/category_card.dart';
 import 'package:mobile/widgets/product_card.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       bottomNavigationBar: const BottomNavigation(),
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Center(
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 17.0),
-              child: Column(
-                spacing: 12.0,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(DTexts.categories, style: TextStyle(
-                        fontSize: 18.0,
-                        fontWeight: FontWeight.w900
-                      )),
-                      IconButton(
-                          onPressed: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => const CategoriesScreen()));
-                          },
-                          icon: Icon(Icons.chevron_right_rounded)
-                      )
-                    ],
-                  ),
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      spacing: 16,
+        child: RefreshIndicator(
+          onRefresh: () async {
+            await Future.wait([
+              ref.read(categoryViewModelProvider.notifier).fetchCategories(),
+              ref.read(productViewModelProvider.notifier).fetchProducts(),
+            ]);
+          },
+          child: SingleChildScrollView(
+            physics: const AlwaysScrollableScrollPhysics(),
+            child: Center(
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 17.0),
+                child: Column(
+                  spacing: 12.0,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        CategoryCard(),
-                        CategoryCard(),
-                        CategoryCard(),
-                        CategoryCard(),
-                        CategoryCard(),
-                        CategoryCard()
+                        Text(
+                          DTexts.categories,
+                          style: TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.w900,
+                          ),
+                        ),
+                        IconButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const CategoriesScreen(),
+                              ),
+                            );
+                          },
+                          icon: Icon(Icons.chevron_right_rounded),
+                        ),
                       ],
                     ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(DTexts.featured, style: TextStyle(
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.w900
-                      )),
-                      IconButton(
+                    SizedBox(height: 78, child: HomeTopCategories()),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          DTexts.featured,
+                          style: TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.w900,
+                          ),
+                        ),
+                        IconButton(
                           onPressed: () => {},
-                          icon: Icon(Icons.chevron_right_rounded)
-                      )
-                    ],
-                  ),
-                  GridView.count(
-                    crossAxisCount: 2,
-                    mainAxisSpacing: 20.0,
-                    crossAxisSpacing: 20.0,
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    children: List.generate(10, (index) => ProductCard()).toList()
-                  )
-                ],
+                          icon: Icon(Icons.chevron_right_rounded),
+                        ),
+                      ],
+                    ),
+                    HomeProducts(),
+                  ],
+                ),
               ),
             ),
           ),
