@@ -25,6 +25,11 @@ class ProductService {
     );
   }
 
+  Future<Product> getProductById(String id) async {
+    final response = await _dio.get('/products/$id');
+    return Product.fromJson(response.data);
+  }
+
 
   Future<PaginationResponse<Product>> getProductsByCategory(
     String categoryId, {

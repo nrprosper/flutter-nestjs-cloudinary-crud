@@ -56,6 +56,16 @@ class ProductViewModel extends StateNotifier<State<List<Product>>> {
     }
   }
 
+  Future<void> getProductById(String id) async{
+    state = const State.loading();
+    try {
+      final product = await _productService.getProductById(id);
+      state = State.success([product]);
+    } catch(e) {
+      state = State.error(Exception(e.toString()));
+    }
+  }
+
   Future<void> loadMore({int limit = 10}) async {
     if (_hasMore) {
       await fetchProducts(limit: limit);
