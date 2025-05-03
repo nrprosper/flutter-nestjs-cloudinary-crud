@@ -28,3 +28,8 @@ final productViewModelProvider = StateNotifierProvider<ProductViewModel, State<L
   final productService = ref.watch(productServiceProvider);
   return ProductViewModel(productService);
 });
+
+final productDetailsProvider = FutureProvider.family<Product, String>((ref, productId) async {
+  final productService = ref.watch(productServiceProvider);
+  return await productService.getProductById(productId);
+});
