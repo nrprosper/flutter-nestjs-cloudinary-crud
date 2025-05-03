@@ -12,7 +12,7 @@ class ProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => const ProductDetails()));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => ProductDetails(productId: product.id)));
       },
       child: Card(
         elevation: 0,
